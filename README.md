@@ -1,5 +1,5 @@
-# Sc-Fund-Product
-重构基金产品部分SpringCloud
+# Sc-Product
+重构产品部分SpringCloud
 # 目的
 ## 1、练习SpringCloud
 ## 2、练习Java8
