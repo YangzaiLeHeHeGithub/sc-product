@@ -3,16 +3,16 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<parent>
-		<artifactId>sc-fund-product</artifactId>
+		<artifactId>sc-product</artifactId>
 		<groupId>com.yz.git</groupId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>sc-fund-product-service</artifactId>
+	<artifactId>sc-product-service</artifactId>
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.yz.git</groupId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>sc-fund-product-service</name>
+	<name>sc-product-service</name>
 	<description>产品系统springCloud重构t</description>
 
 	<properties>

@@ -5,6 +5,6 @@ eureka:
       defaultZone: http://localhost:28080/eureka/
 spring:
   application:
-    name: sc-fund-product-dev
+    name: sc-product-dev
 server:
   port: 18081

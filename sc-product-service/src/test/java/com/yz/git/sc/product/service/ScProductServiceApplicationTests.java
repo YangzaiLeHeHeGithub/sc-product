@@ -1,4 +1,4 @@
-package com.yz.git.sc.fund.product.service;
+package com.yz.git.sc.product.service;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class ScFundProductServiceApplicationTests {
+public class ScProductServiceApplicationTests {
 
 	@Test
 	public void contextLoads() {

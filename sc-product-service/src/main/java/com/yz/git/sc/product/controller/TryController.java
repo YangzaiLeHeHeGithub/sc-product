@@ -1,4 +1,4 @@
-package com.yz.git.sc.fund.product.controller;
+package com.yz.git.sc.product.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +14,6 @@ public class TryController {
 
     @GetMapping("/msg")
     public String tryMsg(){
-        return "try Msg success!";
+        return "try Msg success082!";
     }
 }
