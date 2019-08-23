@@ -14,6 +14,6 @@ public class TryController {
 
     @GetMapping("/msg")
     public String tryMsg(){
-        return "try Msg success082!";
+        return "try Msg success083!";
     }
 }
