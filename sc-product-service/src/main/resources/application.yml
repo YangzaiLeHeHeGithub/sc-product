@@ -1,10 +1,19 @@
-
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:28080/eureka/
 spring:
-  application:
-    name: sc-product-dev
-server:
-  port: 18081
+  profiles:
+    active: @env@
+
+mybatis-plus:
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  type-aliases-package: com.yz.git.sc.product.domain
+  configuration:
+    cache-enabled: true
+    lazy-loading-enabled: true
+    aggressive-lazy-loading: true
+    multiple-result-sets-enabled: true
+    use-column-label: true
+    use-generated-keys: true
+    auto-mapping-behavior: partial
+    default-executor-type: simple
+    map-underscore-to-camel-case: true
+    local-cache-scope: session
+    jdbc-type-for-null: null

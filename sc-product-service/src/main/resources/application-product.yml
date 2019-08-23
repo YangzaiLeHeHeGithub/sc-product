@@ -1,0 +1,52 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:28080/eureka/
+spring:
+  application:
+    name: sc-product-product
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://10.75.229.93:3306/sc_product?useUnicode=true&characterEncoding=utf-8
+    username: order_t_w
+    password: J_mtpJxVtbF3PJ
+    druid:
+      initial-size: 5
+      min-idle: 5
+      max-active: 20
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 1 FROM DUAL
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      filter: stat,wall,slf4j
+      # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+      # 合并多个DruidDataSource的监控数据
+      useGlobalDataSourceStat: true
+      #以下是监控相关配置
+      #过滤器
+      web-stat-filter:
+        enabled: true
+        #忽略资源
+        exclusions: /*.a,*.js,*.gif,*.jpg,*.bmp,*.png,*.css,*.ico,/druid/*
+        url-pattern: /*
+        #配置profileEnable能够监控单个url调用的sql列表。
+        profile-enable: true
+      #selvet 监控可视化界面
+      stat-view-servlet:
+        enabled: true
+        login-password: root
+        login-username: root
+        url-pattern: /druid/*
+        #白名单 空字符串表示都允许 但必须打开这个配置
+        allow:
+        #黑名单
+        deny:
+server:
+  port: 18081
