@@ -15,7 +15,6 @@
         <dependency>
             <groupId>com.yz.git</groupId>
             <artifactId>sc-product-common</artifactId>
-            <version>${project.version}</version>
         </dependency>
     </dependencies>
 </project>

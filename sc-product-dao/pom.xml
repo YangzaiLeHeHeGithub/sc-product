@@ -34,7 +34,6 @@
         <dependency>
             <groupId>com.yz.git</groupId>
             <artifactId>sc-product-domain</artifactId>
-            <version>${project.version}</version>
         </dependency>
 
     </dependencies>
