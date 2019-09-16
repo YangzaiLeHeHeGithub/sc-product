@@ -109,18 +109,33 @@
 						<artifactId>mysql-connector-java</artifactId>
 						<version>${mybatis-connector-java.version}</version>
 					</dependency>
-					<dependency>
+					<!--<dependency>
 						<groupId>com.le.jr</groupId>
 						<artifactId>mybatis-generator-ext</artifactId>
 						<version>1.0.3</version>
-					</dependency>
-				</dependencies>
+					</dependency>-->
+                    <!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-generator -->
+                    <!--<dependency>
+                        <groupId>com.baomidou</groupId>
+                        <artifactId>mybatis-plus-generator</artifactId>
+                        <version>3.2.0</version>
+                    </dependency>
+-->
+                </dependencies>
 				<configuration>
 					<verbose>true</verbose>
 					<overwrite>false</overwrite>
 				</configuration>
 			</plugin>
-		</plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+        </plugins>
 	</build>
 
 </project>
