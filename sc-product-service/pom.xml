@@ -109,11 +109,11 @@
 						<artifactId>mysql-connector-java</artifactId>
 						<version>${mybatis-connector-java.version}</version>
 					</dependency>
-					<dependency>
+					<!--<dependency>
 						<groupId>com.le.jr</groupId>
 						<artifactId>mybatis-generator-ext</artifactId>
 						<version>1.0.3</version>
-					</dependency>
+					</dependency>-->
 				</dependencies>
 				<configuration>
 					<verbose>true</verbose>
