@@ -2,6 +2,10 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:28080/eureka/
+    #register-with-eureka: false
+    #解决com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
+    #fetch-registry: false
+    #com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
 spring:
   application:
     name: sc-product-dev
@@ -52,4 +56,4 @@ spring:
     config:
       enabled: false
 server:
-  port: 18081
+  port: 38081
