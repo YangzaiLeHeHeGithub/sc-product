@@ -26,12 +26,14 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<spring-cloud.version>Greenwich.SR2</spring-cloud.version>
-		<mybatis-connector-java.version>8.0.11</mybatis-connector-java.version>
+<!--		<mybatis-connector-java.version>6.0.6</mybatis-connector-java.version>-->
+        <mybatis-connector-java.version>8.0.11</mybatis-connector-java.version>
 		<mybatis-plus-boot-starter.version>3.1.2</mybatis-plus-boot-starter.version>
 		<druid-spring-boot-starter.version>1.1.18</druid-spring-boot-starter.version>
 		<project.version>0.0.1-SNAPSHOT</project.version>
 		<lombok.version>1.18.8</lombok.version>
 		<mybatis-plus.version>3.1.2</mybatis-plus.version>
+		<annotation-version>1.5.0</annotation-version>
 	</properties>
 
 
@@ -89,6 +91,13 @@
 				<artifactId>sc-product-common</artifactId>
 				<version>${project.version}</version>
 			</dependency>
+			<!-- https://mvnrepository.com/artifact/org.realityforge.org.jetbrains.annotations/org.jetbrains.annotations -->
+			<dependency>
+				<groupId>org.realityforge.org.jetbrains.annotations</groupId>
+				<artifactId>org.jetbrains.annotations</artifactId>
+				<version>${annotation-version}</version>
+			</dependency>
+
 		</dependencies>
 	</dependencyManagement>
 

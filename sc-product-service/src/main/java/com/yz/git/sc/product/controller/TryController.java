@@ -1,7 +1,11 @@
 package com.yz.git.sc.product.controller;
 
-import com.yz.git.sc.product.domain.ScProductInfo;
-import org.springframework.web.bind.annotation.*;
+import com.yz.git.sc.product.annotation.ControllerRecord;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author xuyang
@@ -12,26 +16,16 @@ import org.springframework.web.bind.annotation.*;
 public class TryController {
 
     @GetMapping("/msg")
-    public String tryMsg(){
+    @ControllerRecord(operationUser = "xy" ,operationType = "1")
+    public ResponseEntity<String> tryMsg(){
+        return new ResponseEntity<>("try Msg success083!", HttpStatus.OK);
+                
+    }
+
+
+
+    @GetMapping("/msg/old")
+    public String tryMsgOld(){
         return "try Msg success083!";
-    }
-
-    @GetMapping("/pathv/{path}")
-    public String tryPath(@PathVariable("path")String path){
-        String path1 = path;
-        return path1;
-    }
-
-    @PostMapping("/request/{path}/{name}/{age}")
-    public String tryRequest(@RequestParam("path")String path,@RequestParam("name")String name,@RequestParam("path")Integer age){
-        String path1 = path;
-        String name1 = name;
-        Integer age1 = age;
-        return path1;
-    }
-    @PostMapping("/rb")
-    public ScProductInfo tryRequestBody(@RequestBody ScProductInfo sc){
-        ScProductInfo sc1 = sc;
-        return sc1;
     }
 }

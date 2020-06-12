@@ -2,13 +2,16 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:28080/eureka/
+    #register-with-eureka: false
+    #解决com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
+    #fetch-registry: false
+    #com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
 spring:
   application:
     name: sc-product-dev
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driverClassName: com.mysql.cj.jdbc.Driver
-    #url: jdbc:mysql://10.58.85.1:3306/test?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
     url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
     username: root
     password: 123456
@@ -53,4 +56,4 @@ spring:
     config:
       enabled: false
 server:
-  port: 18081
+  port: 38081
