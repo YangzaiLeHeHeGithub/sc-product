@@ -1,11 +1,14 @@
 package com.yz.git.sc.product.controller;
 
+import com.google.common.collect.Maps;
 import com.yz.git.sc.product.annotation.ControllerRecord;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Map;
 
 /**
  * @author xuyang
@@ -26,6 +29,8 @@ public class TryController {
 
     @GetMapping("/msg/old")
     public String tryMsgOld(){
-        return "try Msg success083!";
+        Map map = Maps.newHashMap();
+        map.getOrDefault("a","default");
+        return "try Msg success0888!";
     }
 }

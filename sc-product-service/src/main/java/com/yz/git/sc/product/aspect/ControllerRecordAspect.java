@@ -2,8 +2,12 @@ package com.yz.git.sc.product.aspect;
 
 import com.yz.git.sc.product.annotation.ControllerRecord;
 import com.yz.git.sc.product.annotation.MetaData;
+import com.yz.git.sc.product.exceptions.BadRequestException;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.ibatis.javassist.NotFoundException;
+import javassist.*;
+import javassist.bytecode.CodeAttribute;
+import javassist.bytecode.LocalVariableAttribute;
+import javassist.bytecode.MethodInfo;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.AfterReturning;
@@ -12,11 +16,14 @@ import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
+import java.util.Arrays;
+import java.util.TreeMap;
 
 /**
  * <p>@ClassName ControlerRecordAspect<p>
@@ -90,7 +97,46 @@ public class ControllerRecordAspect {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         // 获取请求中的参数 这里面包含了controller不需要的参数，需单独处理
         // paramName 请求方法中的参数名称; pjp.getArgs() 拦截的controller方法参数值
+        String[] paramName = getFieldsName(pjp.getTarget().getClass(), metaData.getMethodName());
 
+
+    }
+    /**
+     * 使用javassist来获取方法参数名称
+     *
+     * @param clazz      类名
+     * @param methodName 方法名
+     * @return 名字集合
+     * @throws NotFoundException 异常
+     */
+    private String[] getFieldsName(Class<?> clazz, String methodName) throws NotFoundException {
+        ClassPool pool = ClassPool.getDefault();
+        // 在tomcat之类的容器中是无法通过ClassPool.getDefault()获取到用户定义的类的
+        pool.insertClassPath(new ClassClassPath(clazz));
+
+        CtClass ctClass = pool.get(clazz.getName());
+        CtMethod ctMethod = ctClass.getDeclaredMethod(methodName);
+        MethodInfo methodInfo = ctMethod.getMethodInfo();
+        CodeAttribute codeAttribute = methodInfo.getCodeAttribute();
+        LocalVariableAttribute attr = (LocalVariableAttribute) codeAttribute.getAttribute(LocalVariableAttribute.tag);
+        if (attr == null) {
+            String message = "添加操作记录失败。原因：拦截请求：【" + metaDataContainer.get().getMethodName() + " 】的方法中的参数名称失败";
+            log.warn(message);
+            throw BadRequestException.ofMessage(message);
+        }
+        String[] paramsArgsName = new String[ctMethod.getParameterTypes().length];
+        TreeMap<Integer, String> sortMap = new TreeMap<>();
+        for (int i = 0; i < attr.tableLength(); i++) {
+            sortMap.put(attr.index(i), attr.variableName(i));
+        }
+        int pos = Modifier.isStatic(ctMethod.getModifiers()) ? 0 : 1;
+        paramsArgsName = Arrays.copyOfRange(sortMap.values().toArray(new String[0]), pos, paramsArgsName.length + pos);
+        if (ObjectUtils.isEmpty(paramsArgsName)) {
+            String message = "添加操作记录失败。原因：拦截请求：【" + metaDataContainer.get().getMethodName() + " 】的方法中的参数名称失败";
+            log.warn(message);
+            throw BadRequestException.ofMessage(message);
+        }
+        return paramsArgsName;
     }
 
     /**
