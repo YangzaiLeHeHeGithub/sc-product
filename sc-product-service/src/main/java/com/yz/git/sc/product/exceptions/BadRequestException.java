@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  * @version 1.0
  */
 @SuppressWarnings("serial")
+//1111
+//2222
 @ResponseStatus(value = HttpStatus.BAD_REQUEST)
 public class BadRequestException extends RuntimeException {
     private static final String MESSAGE = "请至少输入一个参数或条件";
