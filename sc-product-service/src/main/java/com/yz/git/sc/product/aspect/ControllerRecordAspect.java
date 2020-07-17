@@ -46,7 +46,7 @@ public class ControllerRecordAspect {
     public void controllerAspect() {
         // ignore
     }
-    @Before("controllerAspect()")
+    //@Before("controllerAspect()")
     public void doBefore(JoinPoint pjp){
 
         MetaData metaData = ControllerRecordAspect.metaDataContainer.get();

@@ -57,3 +57,10 @@ spring:
       enabled: false
 server:
   port: 38081
+
+#配置redis
+  redis:
+    database: 0
+    host: localhost
+    password:
+    port: 6379

@@ -29,7 +29,7 @@ public class PersonController {
        if(null == person.getId()){
            ResponseEntity.status(HttpStatus.NOT_EXTENDED);
        }
-       person.builder().createDate(new Date()).updateDate(new Date()).build();
+       Person.builder().createDate(new Date()).updateDate(new Date()).build();
        int result = personService.insert(person).get();
        if(result == 0){
            return ResponseEntity.ok("Fail");

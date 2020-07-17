@@ -35,6 +35,9 @@
 		<mybatis-plus.version>3.1.2</mybatis-plus.version>
 		<annotation-version>1.5.0</annotation-version>
 		<javassist-version>3.27.0-GA</javassist-version>
+		<swagger.version>1.5.21</swagger.version>
+		<jackson-annotations.version>2.11.1</jackson-annotations.version>
+		<mockito-version>3.4.0</mockito-version>
 	</properties>
 
 
@@ -77,6 +80,43 @@
 				<groupId>org.javassist</groupId>
 				<artifactId>javassist</artifactId>
 				<version>${javassist-version}</version>
+			</dependency>
+			<!--集成redis-->
+			<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-redis -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-data-redis</artifactId>
+				<version>2.2.5.RELEASE</version>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>fastjson</artifactId>
+				<version>1.2.68</version>
+			</dependency>
+			<!-- swagger 注解 -->
+			<dependency>
+				<groupId>io.swagger</groupId>
+				<artifactId>swagger-annotations</artifactId>
+				<version>${swagger.version}</version>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations -->
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-annotations</artifactId>
+				<version>${jackson-annotations.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger-ui</artifactId>
+				<version>2.8.0</version>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/org.mockito/mockito-core -->
+			<dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-core</artifactId>
+				<version>${mockito-version}</version>
+				<scope>test</scope>
 			</dependency>
 
 			<dependency>
